@@ -5,7 +5,13 @@
       "Bash(npx tsc:*)",
       "Bash(pnpm build:*)",
       "Bash(node:*)",
-      "Bash(pnpm remove:*)"
+      "Bash(pnpm remove:*)",
+      "Bash(du -sh C:/Users/user/Desktop/web/projects/blak-naira/public/images/*)",
+      "Bash(npm install:*)",
+      "Bash(npm list:*)",
+      "Bash(magick -version)",
+      "Bash(magick.exe -version)",
+      "Bash(node -e \"require\\(''''sharp''''\\)\")"
     ]
   }
 }

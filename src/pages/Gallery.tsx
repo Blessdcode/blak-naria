@@ -10,8 +10,7 @@ const CATEGORIES: FilterCategory[] = [
   "All",
   "Portrait",
   "Landscape",
-  "Street",
-  "Editorial",
+  "Pre-Wedding"
 ];
 
 export default function Gallery() {
@@ -60,8 +59,10 @@ export default function Gallery() {
   // Grid reveal on scroll
   useGSAP(
     () => {
-      const cards = gridRef.current?.querySelectorAll(".gallery-card");
+      const cards = gridRef.current?.querySelectorAll<HTMLElement>(".gallery-card");
       cards?.forEach((card, i) => {
+        // Skip cards already animated (GSAP sets inline opacity: 1)
+        if (card.style.opacity === "1") return;
         gsap.fromTo(
           card,
           { opacity: 0, y: 40 },
@@ -81,7 +82,7 @@ export default function Gallery() {
 
       return () => ScrollTrigger.getAll().forEach((t) => t.kill());
     },
-    { scope: gridRef, dependencies: [filtered.length] },
+    { scope: gridRef, dependencies: [visibleItems.length, activeFilter] },
   );
 
   // Lightbox open
@@ -213,7 +214,7 @@ export default function Gallery() {
       {/* Masonry grid */}
       <div
         ref={gridRef}
-        className="px-6 md:px-10 max-w-screen-xl mx-auto pb-24 columns-2 md:columns-3 gap-4">
+        className="px-6 md:px-10 max-w-screen-xl mx-auto pb-6 columns-2 md:columns-3 gap-4">
         {visibleItems.map((item, i) => (
           <div
             key={item.id}
@@ -247,7 +248,7 @@ export default function Gallery() {
 
       {/* See More */}
       {hasMore && (
-        <div className="flex justify-center pb-24 -mt-12">
+        <div className="flex justify-center py-12">
           <button
             onClick={() => setVisibleCount((c) => c + 12)}
             className="font-mono text-[10px] tracking-widest uppercase px-8 py-3 border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors duration-300">

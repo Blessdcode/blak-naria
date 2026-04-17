@@ -82,7 +82,7 @@ export function HeroSection() {
         className="absolute inset-0 opacity-0"
         style={{ scale: 0.92 }}>
         <img
-          src="/public/images/IMG_1726.JPG.jpeg"
+          src="/images/IMG_1726.JPG.jpeg"
           alt="Blak Naria — featured photograph"
           className="w-full h-full object-cover"
           style={{ filter: "brightness(0.35)" }}
