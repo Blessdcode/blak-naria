@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/preserve-manual-memoization */
 import { useRef, useState, useCallback, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import placeholder, { type GalleryItem } from "@/data/placeholder";
-
 
 type FilterCategory = "All" | GalleryItem["category"];
 const CATEGORIES: FilterCategory[] = [
@@ -21,6 +21,7 @@ export default function Gallery() {
   const filterBarRef = useRef<HTMLDivElement>(null);
 
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("All");
+  const [visibleCount, setVisibleCount] = useState(12);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const lightboxRef = useRef<HTMLDivElement>(null);
   const lightboxImgRef = useRef<HTMLImageElement>(null);
@@ -29,6 +30,9 @@ export default function Gallery() {
     activeFilter === "All"
       ? placeholder.gallery
       : placeholder.gallery.filter((i) => i.category === activeFilter);
+
+  const visibleItems = filtered.slice(0, visibleCount);
+  const hasMore = visibleCount < filtered.length;
 
   // Animate filter indicator
   const updateIndicator = useCallback((activeEl: HTMLButtonElement) => {
@@ -179,7 +183,7 @@ export default function Gallery() {
           ref={filterBarRef}
           role="tablist"
           aria-label="Filter by category"
-          className="relative flex items-center gap-0 border-b border-[var(--color-border)]">
+          className="relative flex items-center gap-0 border-b border-[var(--color-border)] overflow-x-auto scrollbar-none flex-nowrap">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
@@ -187,6 +191,7 @@ export default function Gallery() {
               aria-selected={activeFilter === cat}
               onClick={(e) => {
                 setActiveFilter(cat);
+                setVisibleCount(12);
                 updateIndicator(e.currentTarget);
               }}
               className={`
@@ -209,7 +214,7 @@ export default function Gallery() {
       <div
         ref={gridRef}
         className="px-6 md:px-10 max-w-screen-xl mx-auto pb-24 columns-2 md:columns-3 gap-4">
-        {filtered.map((item, i) => (
+        {visibleItems.map((item, i) => (
           <div
             key={item.id}
             className="gallery-card group relative overflow-hidden mb-4 cursor-pointer opacity-0 break-inside-avoid"
@@ -240,6 +245,17 @@ export default function Gallery() {
         ))}
       </div>
 
+      {/* See More */}
+      {hasMore && (
+        <div className="flex justify-center pb-24 -mt-12">
+          <button
+            onClick={() => setVisibleCount((c) => c + 12)}
+            className="font-mono text-[10px] tracking-widest uppercase px-8 py-3 border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors duration-300">
+            See More
+          </button>
+        </div>
+      )}
+
       {/* Lightbox */}
       {lightboxIndex !== null && currentItem && (
         <div
@@ -263,9 +279,9 @@ export default function Gallery() {
             {/* Caption */}
             <div className="absolute bottom-0 left-0 right-0 px-4 py-3 flex justify-between items-center border-t border-[var(--color-border)]">
               <div>
-                <p className="font-display font-light text-[var(--color-text)] text-lg">
+                {/* <p className="font-display font-light text-[var(--color-text)] text-lg">
                   {currentItem.title}
-                </p>
+                </p> */}
                 <p className="font-mono text-[10px] tracking-widest uppercase text-[var(--color-muted)]">
                   {currentItem.category}
                 </p>

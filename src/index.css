@@ -115,6 +115,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ─── Utility classes (not in Tailwind) ──────────────────────────────────── */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 .clip-hide {
   clip-path: inset(0 0 100% 0);
 }
