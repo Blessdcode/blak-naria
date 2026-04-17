@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* ─── Design tokens (CSS custom properties) ─────────────────────────────── */
+:root {
+  /* Colors */
+  --color-bg: #000000;
+  --color-surface: #0d0d0d;
+  --color-surface-2: #1a1a1a;
+  --color-text: #ffffff;
+  --color-muted: #888888;
+  --color-border: #222222;
+  --color-border-light: #333333;
+  --color-overlay: rgba(0, 0, 0, 0.92);
+
+  /* Typography */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-mono: "DM Mono", "Courier New", monospace;
+  --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+
+  /* Spacing */
+  --nav-height: 80px;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 250ms;
+  --duration-base: 450ms;
+  --duration-slow: 700ms;
+}
+
+/* ─── Tailwind v4 theme mapping ──────────────────────────────────────────── */
+@theme {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-primary: var(--color-text);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-sans);
+}
+
+/* ─── Base reset ─────────────────────────────────────────────────────────── */
+*,
+/* *::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} */
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom cursor — hide default when JS custom cursor is active */
+body.cursor-active * {
+  cursor: none !important;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-light);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* ─── Focus visible ──────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 1px solid var(--color-text);
+  outline-offset: 4px;
+}
+
+/* ─── Utility classes (not in Tailwind) ──────────────────────────────────── */
+.clip-hide {
+  clip-path: inset(0 0 100% 0);
+}
+
+.clip-reveal {
+  clip-path: inset(0 0 0% 0);
+}
+
+.overflow-clip {
+  overflow: hidden;
+}
+
+/* Page transition overlay */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg);
+  z-index: 9999;
+  transform-origin: bottom;
+  transform: scaleY(0);
+  pointer-events: none;
+}
