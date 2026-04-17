@@ -4,13 +4,16 @@ import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'path'
 
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    react(),
-  ],
+  plugins: [tailwindcss(), react()],
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
+      "@": resolve(__dirname, "./src"),
     },
   },
-})
+  // server: {
+  //   allowedHosts: [
+  //     "pretty-seas-glow.loca.lt",
+  //     "marish-margene-mobbishly.ngrok-free.dev",
+  //   ],
+  // },
+});

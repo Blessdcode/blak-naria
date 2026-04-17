@@ -84,7 +84,7 @@ export function FeaturedWorks() {
           className="font-display font-light text-[var(--color-text)]"
           style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
         >
-         Project 
+         Work Completed 
         </h2>
         <button
           onClick={() => transitionTo('/gallery')}
