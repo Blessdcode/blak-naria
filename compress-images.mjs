@@ -1,10 +1,13 @@
 /**
  * Image compression script.
  * Run: node compress-images.mjs
- * Requires: npm install sharp  (run once before using this script)
  *
- * Resizes all images in public/images to max 1800px wide and compresses to ~80% quality.
- * Originals are left untouched — output goes to public/images/optimized/
+ * - Skips images that are already optimized (no re-processing).
+ * - Resizes to max 1800px wide, 80% JPEG quality.
+ * - Originals stay untouched. Output goes to public/images/optimized/
+ *
+ * After running, add the new image to placeholder.ts using the path:
+ *   /images/optimized/<your-filename>.jpg
  */
 
 import sharp from "sharp";
@@ -25,13 +28,19 @@ const files = readdirSync(INPUT_DIR).filter((f) => {
   return SUPPORTED.includes(ext);
 });
 
-console.log(`Found ${files.length} images to compress...\n`);
+let skipped = 0;
+let compressed = 0;
 
 for (const file of files) {
   const input = join(INPUT_DIR, file);
-  // Output as .jpg regardless of original extension
   const outName = basename(file, extname(file)) + ".jpg";
   const output = join(OUTPUT_DIR, outName);
+
+  // Skip if already optimized
+  if (existsSync(output)) {
+    skipped++;
+    continue;
+  }
 
   try {
     await sharp(input)
@@ -40,9 +49,15 @@ for (const file of files) {
       .toFile(output);
 
     console.log(`✓ ${file} → optimized/${outName}`);
+    compressed++;
   } catch (err) {
     console.error(`✗ ${file}: ${err.message}`);
   }
 }
 
-console.log("\nDone! Update your image paths to /images/optimized/<filename>.jpg");
+if (compressed === 0 && skipped > 0) {
+  console.log(`All ${skipped} images already optimized. Nothing to do.`);
+} else {
+  console.log(`\n✓ Compressed: ${compressed}  Skipped (already done): ${skipped}`);
+  console.log(`Add new images to placeholder.ts using path: /images/optimized/<filename>.jpg`);
+}
