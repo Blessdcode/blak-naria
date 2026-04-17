@@ -13,34 +13,23 @@ export function Footer() {
         </p>
         <div className="flex items-center gap-6">
           <a
-            href={`https://instagram.com/${placeholder.social.instagram.replace('@', '')}`}
+            href={`https://x.com/blak_naira?s=21`}
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-[10px] tracking-widest uppercase text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-            aria-label="Instagram"
-          >
-            Instagram
-          </a>
-          <a
-            href={`https://twitter.com/${placeholder.social.twitter.replace('@', '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-[10px] tracking-widest uppercase text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-            aria-label="Twitter / X"
-          >
+            aria-label="Twitter / X">
             Twitter
           </a>
           <a
-            href={`https://linkedin.com/in/${placeholder.social.linkedin}`}
+            href={`https://www.tiktok.com/@blak.naira.photography?_r=1&_t=ZS-95cVsYPbrjo`}
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-[10px] tracking-widest uppercase text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-            aria-label="LinkedIn"
-          >
-            LinkedIn
+            aria-label="TikTok">
+            Tiktok
           </a>
         </div>
       </div>
     </footer>
-  )
+  );
 }

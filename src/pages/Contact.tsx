@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import placeholder from "@/data/placeholder";
 import { Divider } from "@/components/ui/Divider";
-import { TwitterIcon } from "@/lib/contact.utils";
+import { TikTokIcon, TwitterIcon, WhatsAppIcon } from "@/lib/contact.utils";
 
 const W3F_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -338,6 +338,19 @@ export default function Contact() {
                 </span>
               </a> */}
               <a
+                href={`https://wa.link/vln6lt`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 group"
+                aria-label="WhatsApp">
+                <span className="text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                  <WhatsAppIcon size={16} />
+                </span>
+                <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                  {placeholder.social.whatsapp}
+                </span>
+              </a>
+              <a
                 href={`https://x.com/blak_naira?s=21`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -355,9 +368,9 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 group"
-                aria-label="Twitter / X">
+                aria-label="TikTok">
                 <span className="text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
-                  <TwitterIcon size={16} />
+                  <TikTokIcon size={16} />
                 </span>
                 <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
                   {placeholder.social.tiktok}

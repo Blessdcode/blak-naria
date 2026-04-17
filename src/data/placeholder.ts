@@ -10,6 +10,7 @@ export interface SocialLinks {
   instagram: string;
   twitter: string;
   tiktok: string;
+  whatsapp:string
 }
 
 export interface PlaceholderData {
@@ -34,12 +35,40 @@ const placeholder: PlaceholderData = {
   clients: ["Vogue", "Nike", "Apple", "The New Yorker", "Levi's"],
   gallery: [
     // ── IMG series ───────────────────────────────────────────────────────────
+    {
+      id: 31,
+      src: "/images/optimized/IMG_4506.JPG.jpg",
+      category: "Pre-Wedding",
+      title: "Silhouette I",
+      aspect: "portrait",
+    },
+    {
+      id: 18,
+      src: "/images/optimized/pics (19).jpg",
+      category: "Portrait",
+      title: "Night Walk",
+      aspect: "square",
+    },
 
     {
-      id: 52,
-      src: "/images/optimized/IMG_5344.JPG.jpg",
-      category: "Pre-Wedding",
-      title: "Portrait No. 13",
+      id: 39,
+      src: "/images/optimized/IMG_4876.JPG.jpg",
+      category: "Landscape",
+      title: "Close Study",
+      aspect: "landscape",
+    },
+    {
+      id: 1,
+      src: "/images/optimized/pics (1).jpg",
+      category: "Portrait",
+      title: "Solitude I",
+      aspect: "portrait",
+    },
+    {
+      id: 47,
+      src: "/images/optimized/IMG_5208.JPG.jpg",
+      category: "Portrait",
+      title: "Depth II",
       aspect: "portrait",
     },
     {
@@ -69,24 +98,11 @@ const placeholder: PlaceholderData = {
     {
       id: 29,
       src: "/images/optimized/IMG_4040.JPG.jpg",
-      category: "Portrait",
+      category: "Pre-Wedding",
       title: "Horizon Line",
       aspect: "portrait",
     },
-    {
-      id: 30,
-      src: "/images/optimized/IMG_4056.JPG.jpg",
-      category: "Portrait",
-      title: "Crossroads",
-      aspect: "square",
-    },
-    {
-      id: 31,
-      src: "/images/optimized/IMG_4506.JPG.jpg",
-      category: "Pre-Wedding",
-      title: "Silhouette I",
-      aspect: "portrait",
-    },
+
     {
       id: 32,
       src: "/images/optimized/IMG_4530.JPG.jpg",
@@ -137,12 +153,13 @@ const placeholder: PlaceholderData = {
       aspect: "square",
     },
     {
-      id: 39,
-      src: "/images/optimized/IMG_4876.JPG.jpg",
-      category: "Landscape",
-      title: "Close Study",
-      aspect: "landscape",
+      id: 52,
+      src: "/images/optimized/IMG_5344.JPG.jpg",
+      category: "Pre-Wedding",
+      title: "Portrait No. 13",
+      aspect: "portrait",
     },
+
     {
       id: 40,
       src: "/images/optimized/IMG_4878.JPG.jpg",
@@ -192,13 +209,7 @@ const placeholder: PlaceholderData = {
       title: "Overpass",
       aspect: "square",
     },
-    {
-      id: 47,
-      src: "/images/optimized/IMG_5208.JPG.jpg",
-      category: "Portrait",
-      title: "Depth II",
-      aspect: "portrait",
-    },
+
     {
       id: 48,
       src: "/images/optimized/IMG_5233.JPG.jpg",
@@ -228,13 +239,6 @@ const placeholder: PlaceholderData = {
       aspect: "portrait",
     },
 
-    {
-      id: 1,
-      src: "/images/optimized/pics (1).jpg",
-      category: "Portrait",
-      title: "Solitude I",
-      aspect: "portrait",
-    },
     {
       id: 2,
       src: "/images/optimized/pics (2).jpg",
@@ -347,13 +351,6 @@ const placeholder: PlaceholderData = {
       title: "Soft Light",
       aspect: "portrait",
     },
-    {
-      id: 18,
-      src: "/images/optimized/pics (19).jpg",
-      category: "Portrait",
-      title: "Night Walk",
-      aspect: "square",
-    },
 
     // ── pic series ───────────────────────────────────────────────────────────
     {
@@ -414,6 +411,7 @@ const placeholder: PlaceholderData = {
     instagram: "@blak_naira",
     twitter: "@blak_naira",
     tiktok: "@blak_naira.photography",
+    whatsapp: "+234 803 123 4567",
   },
 };
 

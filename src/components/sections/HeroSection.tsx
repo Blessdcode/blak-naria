@@ -130,7 +130,7 @@ export function HeroSection() {
         </p>
 
         {/* CTA buttons */}
-        <div className="flex items-center justify-center gap-6 mt-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
           <button
             onClick={() => transitionTo("/gallery")}
             className="font-mono text-[11px] tracking-widest uppercase bg-[var(--color-text)] text-[var(--color-bg)] px-8 py-3 hover:bg-[var(--color-muted)] transition-colors duration-300">
