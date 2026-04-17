@@ -127,7 +127,7 @@ export default function About() {
           ref={imageRef}
           className="overflow-hidden aspect-[3/4] md:aspect-auto md:min-h-[70vh]">
           <img
-            src="https://i.ibb.co/p6wJwWhm/blak-naria.jpg"
+            src="/images/optimized/blak naria.jpg"
             alt={`${placeholder.name} — photographer portrait`}
             className="w-full h-[120%] -mt-[10%] object-cover filter grayscale"
           />

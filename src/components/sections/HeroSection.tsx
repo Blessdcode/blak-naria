@@ -1,22 +1,20 @@
-import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
-import { gsap } from '@/lib/gsap'
-import placeholder from '@/data/placeholder'
-import { usePageTransition } from '@/hooks/usePageTransition'
-
-
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/lib/gsap";
+import placeholder from "@/data/placeholder";
+import { usePageTransition } from "@/hooks/usePageTransition";
 
 export function HeroSection() {
-  const containerRef = useRef<HTMLElement>(null)
-  const imageRef = useRef<HTMLDivElement>(null)
-  const nameRef = useRef<HTMLHeadingElement>(null)
-  const taglineRef = useRef<HTMLParagraphElement>(null)
-  const scrollHintRef = useRef<HTMLDivElement>(null)
-  const { transitionTo } = usePageTransition()
+  const containerRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLHeadingElement>(null);
+  const taglineRef = useRef<HTMLParagraphElement>(null);
+  const scrollHintRef = useRef<HTMLDivElement>(null);
+  const { transitionTo } = usePageTransition();
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       // Hero image: scale in
       tl.fromTo(
@@ -24,17 +22,23 @@ export function HeroSection() {
         { scale: 0.92, opacity: 0 },
         { scale: 1, opacity: 1, duration: 1.4 },
         0,
-      )
+      );
 
       // Name: split into chars and stagger
       if (nameRef.current) {
-        const chars = nameRef.current.querySelectorAll('.char')
+        const chars = nameRef.current.querySelectorAll(".char");
         tl.fromTo(
           chars,
-          { y: '110%', opacity: 0 },
-          { y: '0%', opacity: 1, stagger: 0.04, duration: 0.85, ease: 'power3.out' },
+          { y: "110%", opacity: 0 },
+          {
+            y: "0%",
+            opacity: 1,
+            stagger: 0.04,
+            duration: 0.85,
+            ease: "power3.out",
+          },
           0.2,
-        )
+        );
       }
 
       // Tagline fade
@@ -43,7 +47,7 @@ export function HeroSection() {
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.8 },
         0.7,
-      )
+      );
 
       // Scroll hint
       tl.fromTo(
@@ -51,25 +55,26 @@ export function HeroSection() {
         { opacity: 0 },
         { opacity: 1, duration: 0.6 },
         1.1,
-      )
+      );
 
       // Infinite scroll hint animation
-      const scrollLine = scrollHintRef.current?.querySelector('.scroll-line') ?? null
+      const scrollLine =
+        scrollHintRef.current?.querySelector(".scroll-line") ?? null;
       gsap.to(scrollLine, {
         scaleY: 0,
-        transformOrigin: 'top',
+        transformOrigin: "top",
         duration: 1.2,
-        ease: 'power2.inOut',
+        ease: "power2.inOut",
         repeat: -1,
         yoyo: false,
         repeatDelay: 0.4,
-      })
+      });
     },
     { scope: containerRef },
-  )
+  );
 
   // Manual char split for the name
-  const chars = placeholder.name.split('')
+  const chars = placeholder.name.split("");
 
   return (
     <section
@@ -82,7 +87,7 @@ export function HeroSection() {
         className="absolute inset-0 opacity-0"
         style={{ scale: 0.92 }}>
         <img
-          src="/images/IMG_1726.JPG.jpeg"
+          src="/images/optimized/IMG_1726.JPG.jpg"
           alt="Blak Naria — featured photograph"
           className="w-full h-full object-cover"
           style={{ filter: "brightness(0.35)" }}

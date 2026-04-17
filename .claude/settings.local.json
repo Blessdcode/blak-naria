@@ -11,7 +11,10 @@
       "Bash(npm list:*)",
       "Bash(magick -version)",
       "Bash(magick.exe -version)",
-      "Bash(node -e \"require\\(''''sharp''''\\)\")"
+      "Bash(node -e \"require\\(''''sharp''''\\)\")",
+      "Bash(pnpm approve-builds:*)",
+      "Bash(ls *.yaml)",
+      "Bash(pnpm install:*)"
     ]
   }
 }

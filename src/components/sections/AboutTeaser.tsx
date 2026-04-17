@@ -1,18 +1,17 @@
-import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
-import { gsap, ScrollTrigger } from '@/lib/gsap'
-import placeholder from '@/data/placeholder'
-import { Divider } from '@/components/ui/Divider'
-import { usePageTransition } from '@/hooks/usePageTransition'
-
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+import placeholder from "@/data/placeholder";
+import { Divider } from "@/components/ui/Divider";
+import { usePageTransition } from "@/hooks/usePageTransition";
 
 export function AboutTeaser() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const { transitionTo } = usePageTransition()
+  const sectionRef = useRef<HTMLElement>(null);
+  const { transitionTo } = usePageTransition();
 
   useGSAP(
     () => {
-      const items = sectionRef.current?.querySelectorAll('.reveal-item')
+      const items = sectionRef.current?.querySelectorAll(".reveal-item");
       items?.forEach((item) => {
         gsap.fromTo(
           item,
@@ -21,19 +20,19 @@ export function AboutTeaser() {
             opacity: 1,
             y: 0,
             duration: 0.8,
-            ease: 'power3.out',
+            ease: "power3.out",
             scrollTrigger: {
               trigger: item,
-              start: 'top 88%',
+              start: "top 88%",
             },
           },
-        )
-      })
+        );
+      });
 
-      return () => ScrollTrigger.getAll().forEach((t) => t.kill())
+      return () => ScrollTrigger.getAll().forEach((t) => t.kill());
     },
     { scope: sectionRef },
-  )
+  );
 
   return (
     <section
@@ -72,14 +71,14 @@ export function AboutTeaser() {
         <div className="reveal-item opacity-0 grid grid-cols-2 gap-4">
           <div className="aspect-[3/4] overflow-hidden">
             <img
-              src="https://i.ibb.co/mF5BbKN0/pics-17.jpg"
+              src="/images/optimized/IMG_4056.JPG.jpg"
               alt="Portrait"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="aspect-[3/4] overflow-hidden mt-8">
             <img
-              src="https://i.ibb.co/hFVJZX9h/pics-4.jpg"
+              src="/images/optimized/IMG_2999.JPG.jpg"
               alt="Portrait"
               className="w-full h-full object-cover"
             />
