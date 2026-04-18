@@ -143,12 +143,12 @@ export default function Contact() {
 
       {/* Email hero */}
       <div className="px-6 md:px-10 pt-20 pb-8 max-w-screen-xl mx-auto reveal-item opacity-0">
-        <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--color-muted)] mb-6">
+        <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--color-text)] mb-6">
           Get in touch
         </p>
         <a
           href={`mailto:${placeholder.email}`}
-          className="font-display font-light text-[var(--color-text)] hover:text-[var(--color-muted)] transition-colors block"
+          className="font-display font-light text-[(--color-text)]  transition-colors block"
           style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)" }}>
           {placeholder.email}
         </a>
@@ -165,12 +165,12 @@ export default function Contact() {
               <p className="font-display font-light text-[var(--color-text)] text-3xl mb-4">
                 Message received.
               </p>
-              <p className="text-[var(--color-muted)]">
+              <p className="text-[var(--color-text)]">
                 Thank you for reaching out. I'll be in touch shortly.
               </p>
               <button
                 onClick={() => setStatus("idle")}
-                className="mt-8 font-mono text-[11px] tracking-widest uppercase text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors underline-offset-4 hover:underline">
+                className="mt-8 font-mono text-[11px] tracking-widest uppercase text-[var(--color-text)] hover:text-[var(--color-text)] transition-colors underline-offset-4 hover:underline">
                 Send another
               </button>
             </div>
@@ -187,7 +187,7 @@ export default function Contact() {
                   className={`absolute left-0 font-mono text-[10px] tracking-widest uppercase transition-all duration-300 pointer-events-none ${
                     focused === "name" || form.name
                       ? "-top-4 text-[var(--color-text)]"
-                      : "top-3 text-[var(--color-muted)]"
+                      : "top-3 text-[var(--color-text)]"
                   }`}>
                   Your name
                 </label>
@@ -212,7 +212,7 @@ export default function Contact() {
                   className={`absolute left-0 font-mono text-[10px] tracking-widest uppercase transition-all duration-300 pointer-events-none ${
                     focused === "email" || form.email
                       ? "-top-4 text-[var(--color-text)]"
-                      : "top-3 text-[var(--color-muted)]"
+                      : "top-3 text-[var(--color-text)]"
                   }`}>
                   Email address
                 </label>
@@ -234,7 +234,7 @@ export default function Contact() {
               <div className="relative">
                 <label
                   htmlFor="projectType"
-                  className="block font-mono text-[10px] tracking-widest uppercase text-[var(--color-muted)] mb-2">
+                  className="block font-mono text-[10px] tracking-widest uppercase text-[var(--color-text)] mb-2">
                   Project type
                 </label>
                 <select
@@ -261,7 +261,7 @@ export default function Contact() {
                   className={`absolute left-0 font-mono text-[10px] tracking-widest uppercase transition-all duration-300 pointer-events-none ${
                     focused === "message" || form.message
                       ? "-top-4 text-[var(--color-text)]"
-                      : "top-3 text-[var(--color-muted)]"
+                      : "top-3 text-[var(--color-text)]"
                   }`}>
                   Tell me about your project
                 </label>
@@ -280,7 +280,7 @@ export default function Contact() {
 
               {/* Error message */}
               {status === "error" && (
-                <p className="font-mono text-[10px] tracking-widest uppercase text-[var(--color-muted)]">
+                <p className="font-mono text-[10px] tracking-widest uppercase text-[var(--color-text)]">
                   Something went wrong. Please email directly at{" "}
                   <a
                     href={`mailto:${placeholder.email}`}
@@ -320,7 +320,7 @@ export default function Contact() {
         {/* ── Social + info ── */}
         <div className="reveal-item opacity-0 flex flex-col justify-start gap-12 md:pl-12">
           <div>
-            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--color-muted)] mb-6">
+            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--color-text)] mb-6">
               Follow along
             </p>
             <div className="space-y-4">
@@ -330,10 +330,10 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 group"
                 aria-label="Instagram">
-                <span className="text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                <span className="text-[var(--color-text)] group-hover:text-[var(--color-text)] transition-colors">
                   <InstagramIcon size={16} />
                 </span>
-                <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-text)] group-hover:text-[var(--color-text)] transition-colors">
                   {placeholder.social.instagram}
                 </span>
               </a> */}
@@ -343,10 +343,10 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 group"
                 aria-label="WhatsApp">
-                <span className="text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                <span className="text-[var(--color-text)] group-hover:text-[var(--color-text)] transition-colors">
                   <WhatsAppIcon size={16} />
                 </span>
-                <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-text)] group-hover:text-[var(--color-text)] transition-colors">
                   {placeholder.social.whatsapp}
                 </span>
               </a>
@@ -356,10 +356,10 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 group"
                 aria-label="Twitter / X">
-                <span className="text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                <span className="text-[var(--color-text)] group-hover:text-[var(--color-text)] transition-colors">
                   <TwitterIcon size={16} />
                 </span>
-                <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-text)] group-hover:text-[var(--color-text)] transition-colors">
                   {placeholder.social.twitter}
                 </span>
               </a>
@@ -369,10 +369,10 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 group"
                 aria-label="TikTok">
-                <span className="text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                <span className="text-[var(--color-text)] group-hover:text-[var(--color-text)] transition-colors">
                   <TikTokIcon size={16} />
                 </span>
-                <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-muted)] group-hover:text-[var(--color-text)] transition-colors">
+                <span className="font-mono text-[11px] tracking-widest uppercase text-[var(--color-text)] group-hover:text-[var(--color-text)] transition-colors">
                   {placeholder.social.tiktok}
                 </span>
               </a>
@@ -382,13 +382,13 @@ export default function Contact() {
           <Divider />
 
           <div>
-            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--color-muted)] mb-3">
+            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--color-text)] mb-3">
               Based in
             </p>
             <p className="font-display font-light text-[var(--color-text)] text-2xl">
               Edo State, Nigeria
             </p>
-            <p className="text-[var(--color-muted)] text-sm mt-1">
+            <p className="text-[var(--color-text)] text-sm mt-1">
               Available for work worldwide
             </p>
           </div>

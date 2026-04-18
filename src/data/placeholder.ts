@@ -26,10 +26,11 @@ export interface PlaceholderData {
 
 const placeholder: PlaceholderData = {
   name: "Blak Naira",
-  tagline: "Capturing light, shadow, and everything in between.",
+  tagline: "Exploring Lights, Colors, and Shadows through photography",
   bio: [
-    "Blak Naira is a visionary photographer whose work transcends the ordinary, weaving together creativity, cinematic flair, and dramatic artistry under the distinctive banner of their brand, Blak Naira. With a keen eye for storytelling through light, shadow, and composition, Blak Naira photography captures the essence of fleeting moments and transforms them into timeless visual narratives.",
-    "Specializing in creative and cinematic photography, Blak Naira masterfully blends bold, evocative aesthetics with a deep appreciation for the artistic potential of every frame. Their portfolio is a testament to a passion for pushing boundaries, where each image is a carefully crafted piece of art, rich with emotion and atmosphere.",
+    "Photography for me is not just about capturing a subject; it is a deliberate study of how light interacts with the world. Based in Benin City, Nigeria, I approach my craft with a deep fascination for the interplay of vibrant colors and deep, cinematic shadows. Whether framing the quiet dignity of a studio portrait or the sweeping scale of natural scenery, my goal is to elevate every frame into a compelling visual narrative.",
+    "My work is defined by a commitment to high-end editorial aesthetics and uncompromising technical precision. I bring an analytical rigor to my art—mastering complex studio lighting setups, from classic Rembrandt to high-key illumination, and utilizing professional-grade equipment to achieve maximum fidelity. I am dedicated to preserving the 100% authentic identity and intricate textures of my subjects, ensuring every nuance is rendered with striking, high-resolution clarity.",
+    "At Blak Naira Photography, the focus is on bridging the gap between raw, vibrant Nigerian life and flawless, disciplined execution. Every session is an opportunity to experiment, refine, and deliver timeless, cinematic imagery that speaks for itself.",
   ],
   services: ["Portrait", "Out-Door", "Studio"],
   clients: ["Vogue", "Nike", "Apple", "The New Yorker", "Levi's"],
