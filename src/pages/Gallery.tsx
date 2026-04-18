@@ -228,9 +228,18 @@ export default function Gallery() {
             <img
               src={item.src}
               alt={item.title}
-              className="w-full block transition-transform duration-700 group-hover:scale-[1.04] "
+              className="w-full block transition-transform duration-700 group-hover:scale-[1.04] opacity-0"
               loading="lazy"
+              onLoad={(e) => {
+                const img = e.currentTarget;
+                img.style.opacity = "1";
+                img.style.transition = "opacity 0.5s ease";
+                const skeleton = img.nextElementSibling as HTMLElement | null;
+                if (skeleton) skeleton.style.display = "none";
+              }}
             />
+            {/* Skeleton overlay — hidden once image loads */}
+            <div className="skeleton-shimmer absolute inset-0 pointer-events-none" aria-hidden />
             {/* Caption overlay */}
             <div
               className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--color-bg)]/90 to-transparent p-4
