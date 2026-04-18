@@ -218,7 +218,7 @@ export default function Gallery() {
         {visibleItems.map((item, i) => (
           <div
             key={item.id}
-            className="gallery-card group relative overflow-hidden mb-4 cursor-pointer opacity-0 break-inside-avoid"
+            className="gallery-card group relative overflow-hidden mb-4 cursor-pointer opacity-0 break-inside-avoid skeleton-shimmer"
             onClick={() => openLightbox(i)}
             data-cursor-expand
             role="button"
@@ -228,18 +228,9 @@ export default function Gallery() {
             <img
               src={item.src}
               alt={item.title}
-              className="w-full block transition-transform duration-700 group-hover:scale-[1.04] opacity-0"
+              className="w-full block transition-transform duration-700 group-hover:scale-[1.04]"
               loading="lazy"
-              onLoad={(e) => {
-                const img = e.currentTarget;
-                img.style.opacity = "1";
-                img.style.transition = "opacity 0.5s ease";
-                const skeleton = img.nextElementSibling as HTMLElement | null;
-                if (skeleton) skeleton.style.display = "none";
-              }}
             />
-            {/* Skeleton overlay — hidden once image loads */}
-            <div className="skeleton-shimmer absolute inset-0 pointer-events-none" aria-hidden />
             {/* Caption overlay */}
             <div
               className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--color-bg)]/90 to-transparent p-4
