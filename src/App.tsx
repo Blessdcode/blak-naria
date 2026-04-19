@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { CustomCursor } from '@/components/layout/CustomCursor'
+// import { CustomCursor } from '@/components/layout/CustomCursor'
 import { PageTransition } from '@/components/layout/PageTransition'
 import { killAllScrollTriggers } from '@/lib/gsap'
 
@@ -23,7 +23,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <>
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <PageTransition />
       <ScrollToTop />
       <Navbar />
