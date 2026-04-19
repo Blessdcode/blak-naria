@@ -2,10 +2,10 @@ import { Suspense, lazy, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { CustomCursor } from '@/components/layout/CustomCursor'
-import { PageTransition } from '@/components/layout/PageTransition'
+// import { CustomCursor } from '@/components/layout/CustomCursor'
+// import { PageTransition } from '@/components/layout/PageTransition'
 import { killAllScrollTriggers } from '@/lib/gsap'
-import { useIsDesktop } from '@/hooks/useIsDesktop'
+// import { useIsDesktop } from '@/hooks/useIsDesktop'
 
 const Home = lazy(() => import('@/pages/Home'))
 const About = lazy(() => import('@/pages/About'))
@@ -22,12 +22,12 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  const isDesktop = useIsDesktop()
+  // const isDesktop = useIsDesktop()
 
   return (
     <>
-      {isDesktop && <CustomCursor />}
-      {isDesktop && <PageTransition />}
+      {/* {isDesktop && <CustomCursor />}
+      {isDesktop && <PageTransition />} */}
       <ScrollToTop />
       <Navbar />
       <Suspense
