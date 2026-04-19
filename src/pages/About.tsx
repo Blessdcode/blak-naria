@@ -19,18 +19,21 @@ export default function About() {
 
   useGSAP(
     () => {
-      // Parallax portrait
-      const portraitImg = imageRef.current?.querySelector('img') ?? null
-      gsap.to(portraitImg, {
-        y: -80,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
+      // Parallax portrait — desktop only
+      const isDesktop = window.matchMedia('(pointer: fine)').matches
+      if (isDesktop) {
+        const portraitImg = imageRef.current?.querySelector('img') ?? null
+        gsap.to(portraitImg, {
+          y: -80,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: imageRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
+      }
 
       // Bio lines stagger
       pageRef.current?.querySelectorAll('.bio-line').forEach((el) => {
