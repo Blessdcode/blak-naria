@@ -44,7 +44,8 @@ export default function About() {
             ease: 'power3.out',
             scrollTrigger: {
               trigger: el,
-              start: 'top 90%',
+              start: 'top 100%',
+              once: true,
             },
           },
         )
@@ -99,7 +100,8 @@ export default function About() {
         )
       }
 
-      return () => ScrollTrigger.getAll().forEach((t) => t.kill())
+      // Refresh after lazy-loaded layout settles so trigger positions are correct
+      setTimeout(() => ScrollTrigger.refresh(), 100)
     },
     { scope: pageRef },
   )

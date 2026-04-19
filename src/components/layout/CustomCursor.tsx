@@ -52,10 +52,15 @@ export function CustomCursor() {
 
     bindInteractables()
 
-    const observer = new MutationObserver(bindInteractables)
+    let debounceTimer: ReturnType<typeof setTimeout>
+    const observer = new MutationObserver(() => {
+      clearTimeout(debounceTimer)
+      debounceTimer = setTimeout(bindInteractables, 150)
+    })
     observer.observe(document.body, { childList: true, subtree: true })
 
     return () => {
+      clearTimeout(debounceTimer)
       document.body.classList.remove('cursor-active')
       window.removeEventListener('mousemove', handleMove)
       observer.disconnect()
