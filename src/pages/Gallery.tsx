@@ -4,6 +4,33 @@ import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import placeholder, { type GalleryItem } from "@/data/placeholder";
+import { ProgressiveImage } from "@/components/ui/ProgressiveImage";
+
+/**
+ * Derives the local /images/optimized/ path from an ibb.co URL.
+ * URL naming  →  local naming
+ *   pics-N.jpg       →  pics (N).jpg
+ *   pic-N.jpg        →  pic (N).jpg
+ *   IMG-XXXX-JPG.jpg →  IMG_XXXX.JPG.jpg
+ *   IMG-XXXX.jpg     →  IMG_XXXX.jpg
+ *   anything else    →  same filename (e.g. where.jpg)
+ */
+function getLocalFallback(src: string): string | undefined {
+  if (src.startsWith('/')) return undefined // already local
+
+  let name = (src.split('/').pop() ?? '').replace(/\.jpg\.jpg$/i, '.jpg')
+
+  if (/^pics-\d+\.jpg$/i.test(name))
+    name = name.replace(/^pics-(\d+)\.jpg$/i, 'pics ($1).jpg')
+  else if (/^pic-\d+\.jpg$/i.test(name))
+    name = name.replace(/^pic-(\d+)\.jpg$/i, 'pic ($1).jpg')
+  else if (/^IMG-\d+-JPG\.jpg$/i.test(name))
+    name = name.replace(/^IMG-(\d+)-JPG\.jpg$/i, 'IMG_$1.JPG.jpg')
+  else if (/^IMG-\d+\.jpg$/i.test(name))
+    name = name.replace(/^IMG-(\d+)\.jpg$/i, 'IMG_$1.jpg')
+
+  return `/images/optimized/${name}`
+}
 
 type FilterCategory = "All" | GalleryItem["category"];
 const CATEGORIES: FilterCategory[] = [
@@ -225,11 +252,11 @@ export default function Gallery() {
             aria-label={`Open ${item.title}`}
             tabIndex={0}
             onKeyDown={(e) => e.key === "Enter" && openLightbox(i)}>
-            <img
+            <ProgressiveImage
               src={item.src}
+              fallback={getLocalFallback(item.src)}
               alt={item.title}
               className="w-full block transition-transform duration-700 group-hover:scale-[1.04]"
-              loading="lazy"
             />
             {/* Caption overlay */}
             <div
@@ -276,6 +303,10 @@ export default function Gallery() {
               src={currentItem.src}
               alt={currentItem.title}
               className="max-w-[80vw] max-h-[82vh] object-contain"
+              onError={(e) => {
+                const local = getLocalFallback(currentItem.src)
+                if (local) (e.currentTarget as HTMLImageElement).src = local
+              }}
             />
             {/* Caption */}
             <div className="absolute bottom-0 left-0 right-0 px-4 py-3 flex justify-between items-center border-t border-[var(--color-border)]">
